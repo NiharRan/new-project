@@ -1,0 +1,14 @@
+.shadow {
+  box-shadow: 0px 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+a {
+  color: #5a5af5;
+}
+
+.project-title {
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  text-transform: uppercase;
+  font-weight: 500;
+}
