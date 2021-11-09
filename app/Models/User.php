@@ -28,7 +28,7 @@ class User extends Model
 
     public function getLinkAttribute()
     {
-        return "users/$this->slug";
+        return "/users/$this->slug";
     }
 
     public function getFullNameAttribute()
@@ -38,12 +38,22 @@ class User extends Model
     protected $appends = ['link', 'full_name'];
 
 
-    public function tasks()
+    public function assigned()
     {
         $model = __NAMESPACE__ . '\Task';
         return $this->hasMany(
             $model,
-            'project_id',
+            'assign_to',
+            'id'
+        );
+    }
+
+    public function assigned_by()
+    {
+        $model = __NAMESPACE__ . '\Task';
+        return $this->hasMany(
+            $model,
+            'assign_by',
             'id'
         );
     }

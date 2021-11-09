@@ -3,6 +3,7 @@ import Project from "./Modules/Project/Index.vue";
 import ProjectDetails from "./Modules/Project/Details.vue";
 import Task from "./Modules/Task/Index.vue";
 import User from "./Modules/User/Index.vue";
+import UserDetails from "./Modules/User/Details.vue";
 
 export default [
   {
@@ -19,7 +20,7 @@ export default [
     component: Project,
   },
   {
-    path: "/projects/:id",
+    path: "/projects/:slug",
     name: "projectDetails",
     component: ProjectDetails,
   },
@@ -32,5 +33,10 @@ export default [
     path: "/users",
     name: "user",
     component: User,
+  },
+  {
+    path: "/users/:slug",
+    name: "userDetails",
+    component: UserDetails,
   },
 ];

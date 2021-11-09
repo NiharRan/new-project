@@ -10,12 +10,12 @@
     </div>
 
     <div>
-      <h1 class="project-title">{{ details?.name }}</h1>
+      <h1 class="project-title">{{ details?.full_name }}</h1>
     </div>
 
     <el-table
-      v-if="details?.tasks?.data?.length > 0"
-      :data="details.tasks.data"
+      v-if="details && details.projects && details.projects.length > 0"
+      :data="details.projects"
       style="width: 100%; margin-top: 20px"
     >
       <el-table-column label="Date" prop="created_at">
@@ -23,7 +23,12 @@
           {{ formatDate(scope.row.created_at) }}
         </template>
       </el-table-column>
-      <el-table-column label="Name" prop="name"> </el-table-column>
+      <el-table-column label="Name">
+        <template #default="scope">
+          <router-link :to="scope.row.link">{{ scope.row.name }}</router-link>
+        </template>
+      </el-table-column>
+      <el-table-column label="Tasks" prop="total_tasks"> </el-table-column>
       <el-table-column align="right">
         <template #default="scope">
           <el-button size="mini" @click="handleEdit(scope.row)">Edit</el-button>
@@ -38,13 +43,12 @@
         </template>
       </el-table-column>
     </el-table>
-
     <add-edit-dialog
       :editable="editable"
       :visible="visible"
-      :hideColumns="{ project: true }"
       :form="formData"
       :errors="errors"
+      :users="users"
       @close="clearData"
       @save="handleSubmit"
     />
@@ -60,9 +64,9 @@ import {
   useDateTime,
   useNotification,
 } from "../../composables";
-import AddEditDialog from "../Task/AddEditDialog.vue";
+import AddEditDialog from "../Project/AddEditDialog.vue";
 import { ElNotification } from "element-plus";
-import Helper from "../Task/helper";
+import Helper from "../Project/helper";
 import Rest from "@/admin/Bits/Rest";
 
 export default {
@@ -70,9 +74,9 @@ export default {
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const id = route.params.id;
+    const slug = route.params.slug;
 
-    let formData = reactive(Helper.defaultFormData(id));
+    let formData = reactive(Helper.defaultFormData(slug));
     let errors = reactive({ name: "" });
     let visible = ref(false);
     let editable = ref(false);
@@ -81,16 +85,16 @@ export default {
     let loading = ref(false);
 
     const { fetchData } = useFetch(loading);
-    const fetchProjectDetails = async function () {
-      const data = await fetchData(`projects/${id}`);
+    const fetchUserDetails = async function () {
+      const data = await fetchData(`users/${slug}`);
       if (data) {
-        details.value = data.project;
+        details.value = data.user;
       }
     };
-    fetchProjectDetails();
+    fetchUserDetails();
 
     const back = function () {
-      router.push("/projects");
+      router.push("/users");
     };
 
     const { formatDate } = useDateTime();
@@ -98,7 +102,8 @@ export default {
     const { notify } = useNotification();
 
     const handleSubmit = async function () {
-      const url = editable.value == true ? `tasks/${formData.id}` : "tasks";
+      const url =
+        editable.value == true ? `projects/${formData.id}` : "projects";
       let response = null;
       try {
         if (editable.value == true) {
@@ -107,9 +112,9 @@ export default {
           response = await Rest.post(url, formData);
         }
         if (response) {
-          fetchProjectDetails();
+          fetchUserDetails();
           handleEdit(Helper.defaultFormData());
-          ElNotification(notify("Tasks", response.message, "success"));
+          ElNotification(notify("Projects", response.message, "success"));
           handleModal(false);
         }
       } catch (error) {
@@ -121,17 +126,17 @@ export default {
     const handleEdit = function (row) {
       editable.value = true;
       formData.id = row.id;
-      formData.project = id;
+      formData.project = details.id;
       formData.name = row.name;
       formData.status = row.status;
       visible.value = true;
     };
     const handleDelete = async function (row) {
       try {
-        const response = await Rest.delete(`tasks/${row.id}`);
+        const response = await Rest.delete(`projects/${row.id}`);
         if (response) {
-          fetchTasks();
-          ElNotification(notify("Tasks", response.message, "success"));
+          fetchProjects();
+          ElNotification(notify("Projects", response.message, "success"));
         }
       } catch (error) {
         ElNotification(notify("Oops", error.statusText, "error"));

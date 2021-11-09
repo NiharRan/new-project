@@ -18,7 +18,8 @@ class TaskMigrator
             $sql = "CREATE TABLE $table (
                 `id` BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 `project_id` BIGINT(20) UNSIGNED NOT NULL,
-                `user_id` BIGINT(20) UNSIGNED NOT NULL,
+                `assign_to` BIGINT(20) UNSIGNED NOT NULL,
+                `assign_by` BIGINT(20) UNSIGNED NOT NULL,
                 `name` VARCHAR(100) NOT NULL,
                 `slug` TEXT NULL,
                 `status` TINYINT NULL,

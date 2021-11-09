@@ -16,9 +16,20 @@
       </el-table-column>
       <el-table-column label="Name" prop="name"> </el-table-column>
       <el-table-column label="Project" #default="scope">
-        <router-link style="color: blue" :to="scope.row.project.link">{{
-          scope.row.project.name
-        }}</router-link>
+        <router-link
+          v-if="scope.row.project"
+          style="color: blue"
+          :to="scope.row.project.link"
+          >{{ scope.row.project.name }}</router-link
+        >
+      </el-table-column>
+      <el-table-column label="Assign To" #default="scope">
+        <router-link
+          v-if="scope.row.to"
+          style="color: blue"
+          :to="scope.row.to.link"
+          >{{ scope.row.to.full_name }}</router-link
+        >
       </el-table-column>
       <el-table-column align="right">
         <template #default="scope">
@@ -38,11 +49,13 @@
       :editable="editable"
       :visible="visible"
       :projects="projects"
+      :users="users"
       :form="formData"
       :errors="errors"
       :hideColumns="{}"
       @close="clearData"
       @save="handleSubmit"
+      @fetchUsers="fetchUsers"
     />
   </el-main>
 </template>
@@ -73,19 +86,42 @@ export default {
     let loading = ref(false);
     let tasks = ref(null);
     let projects = ref(null);
+    let users = ref(null);
 
     const { fetchTasks } = useTask(loading);
-    const { fetchProjects } = useProject(loading);
+    const { fetchProjects, fetchProjectUsers } = useProject(loading);
     fetchTasks("tasks", tasks);
     fetchProjects("projects", projects, { dropdown: true });
+    const fetchUsers = function () {
+      let project = getProject();
+      let url = `projects/users/${project}`;
+      fetchProjectUsers(url, users);
+    };
 
     const { formatDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
 
+    const getProject = function () {
+      return typeof formData.project === "object" && formData.project != null
+        ? formData.project.id
+        : formData.project;
+    };
+
+    const getUser = function () {
+      return typeof formData.user === "object" && formData.project != null
+        ? formData.user.id
+        : formData.user;
+    };
+
     const handleSubmit = async function () {
       const url = editable.value == true ? `tasks/${formData.id}` : "tasks";
       let response = null;
+      let project = getProject();
+      let user = getUser();
+
+      formData.project = project;
+      formData.user = user;
       try {
         if (editable.value == true) {
           response = await Rest.put(url, formData);
@@ -93,10 +129,10 @@ export default {
           response = await Rest.post(url, formData);
         }
         if (response) {
-          fetchTasks('tasks', tasks);
+          handleModal(false);
+          fetchTasks("tasks", tasks);
           handleEdit(Helper.defaultFormData());
           ElNotification(notify("Tasks", response.message, "success"));
-          handleModal(false);
         }
       } catch (error) {
         errors = error.responseJSON;
@@ -108,15 +144,19 @@ export default {
       editable.value = true;
       formData.id = row.id;
       formData.project = row.project;
+      formData.user = row.to;
       formData.name = row.name;
       formData.status = row.status;
       visible.value = true;
+      if (formData.project) {
+        fetchUsers();
+      }
     };
     const handleDelete = async function (row) {
       try {
         const response = await Rest.delete(`tasks/${row.id}`);
         if (response) {
-          fetchTasks('tasks', tasks);
+          fetchTasks("tasks", tasks);
           ElNotification(notify("Tasks", response.message, "success"));
         }
       } catch (error) {
@@ -135,6 +175,7 @@ export default {
       formData,
       errors,
       projects,
+      users,
       tasks,
       loading,
       search,
@@ -145,6 +186,8 @@ export default {
       formatDate,
       notify,
       clearData,
+      fetchProjectUsers,
+      fetchUsers,
     };
   },
 };

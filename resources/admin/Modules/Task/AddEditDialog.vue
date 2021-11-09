@@ -17,12 +17,30 @@
 
     <div v-if="!hideColumns.project">
       <label for="project">Project</label>
-      <el-select v-model="form.project" placeholder="Select">
+      <el-select
+        v-model="form.project"
+        placeholder="Select"
+        value-key="id"
+        @change="$emit('fetchUsers')"
+      >
         <el-option
           v-for="item in projects"
           :key="item.id"
           :label="item.name"
-          :value="item.id"
+          :value="item"
+        >
+        </el-option>
+      </el-select>
+    </div>
+
+    <div v-if="!hideColumns.user">
+      <label for="user">User</label>
+      <el-select v-model="form.user" placeholder="Select" value-key="id">
+        <el-option
+          v-for="item in users"
+          :key="item.id"
+          :label="item.full_name"
+          :value="item"
         >
         </el-option>
       </el-select>
@@ -42,8 +60,9 @@ export default {
     visible: { type: Boolean, default: false },
     form: { type: Object, default: () => null },
     projects: { type: Object, default: () => null },
+    users: { type: Object, default: () => null },
     hideColumns: { type: Object, default: () => {} },
   },
-  emits: ["close", "save"],
+  emits: ["close", "save", "fetchUsers"],
 };
 </script>

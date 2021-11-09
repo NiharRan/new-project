@@ -18,7 +18,8 @@ class Task extends Model
     protected $fillable = [
         'name',
         'project_id',
-        'user_id',
+        'assign_to',
+        'assign_by',
         'slug',
         'status'
     ];
@@ -40,12 +41,21 @@ class Task extends Model
         );
     }
 
-    public function user()
+    public function to()
     {
         $model = __NAMESPACE__ . '\User';
         return $this->belongsTo(
             $model,
-            'user_id',
+            'assign_to',
+            'id'
+        );
+    }
+    public function by()
+    {
+        $model = __NAMESPACE__ . '\User';
+        return $this->belongsTo(
+            $model,
+            'assign_by',
             'id'
         );
     }

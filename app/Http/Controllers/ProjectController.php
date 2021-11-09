@@ -54,11 +54,11 @@ class ProjectController extends Controller
         ];
     }
 
-    public function get($id)
+    public function get($slug)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::where('slug', $slug)->first();
         if ($project) {
-            $project->tasks = Task::where('project_id', $id)
+            $project->tasks = Task::with(['to', 'by'])->where('project_id', $project->id)
                 ->orderBy('id', 'DESC')
                 ->paginate();
         }
@@ -71,7 +71,8 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $this->validate($data, [
-            'name' => 'required'
+            'name' => 'required',
+            'users' => 'required|array'
         ]);
 
         $project = Project::findOrFail($id);
@@ -98,6 +99,14 @@ class ProjectController extends Controller
 
         return [
             'message' => __('Project has been deleted', 'fluent-crod')
+        ];
+    }
+
+    public function users($id)
+    {
+        $users = Project::find($id)->users()->get();
+        return [
+            'users' => $users
         ];
     }
 }

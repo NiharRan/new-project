@@ -30,7 +30,7 @@ class Project extends Model
 
     public function getLinkAttribute()
     {
-        return "projects/$this->slug";
+        return "/projects/$this->slug";
     }
 
     protected $appends = ['link'];

@@ -17,12 +17,17 @@
 
     <div style="margin-bottom: 15px">
       <label for="users">Asigned To</label>
-      <el-select v-model="form.users" multiple placeholder="Select">
+      <el-select
+        v-model="form.users"
+        multiple
+        placeholder="Select"
+        value-key="id"
+      >
         <el-option
           v-for="item in users"
           :key="item.id"
           :label="item.full_name"
-          :value="item.id"
+          :value="item"
         >
         </el-option>
       </el-select>

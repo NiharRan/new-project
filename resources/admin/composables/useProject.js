@@ -13,5 +13,12 @@ export default function (loading) {
       projects.value = data.projects;
     }
   };
-  return { fetchProjectDetails, fetchProjects };
+
+  const fetchProjectUsers = async function (url, users) {
+    const data = await fetchData(url);
+    if (data) {
+      users.value = data.users;
+    }
+  };
+  return { fetchProjectDetails, fetchProjects, fetchProjectUsers };
 }

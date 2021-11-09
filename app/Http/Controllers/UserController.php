@@ -2,7 +2,6 @@
 
 namespace NewProject\App\Http\Controllers;
 
-use NewProject\App\Models\Task;
 use NewProject\App\Models\User;
 use NewProject\Framework\Request\Request;
 
@@ -27,9 +26,10 @@ class UserController extends Controller
         }
 
         $users = $users->paginate();
-        foreach ($users as $user) {
-            $user->total_tasks = $user->tasks()->count();
-            $user->total_projects = $user->projects()->count();
+        foreach ($users as $key => $user) {
+            $users[$key]->total_assigned_tasks = $user->assigned()->count();
+            $users[$key]->total_assigned_by_tasks = $user->assigned_by()->count();
+            $users[$key]->total_projects = $user->projects()->count();
         }
         return [
             'users' => $users
@@ -58,13 +58,15 @@ class UserController extends Controller
         ];
     }
 
-    public function get($id)
+    public function get($slug)
     {
-        $user = User::findOrFail($id);
+        $user = User::with(['projects'])->where('slug', $slug)->first();
         if ($user) {
-            $user->tasks = Task::where('user_id', $id)
-                ->orderBy('id', 'DESC')
-                ->paginate();
+            foreach ($user->projects as $key => $project) {
+                $user->projects[$key]->total_tasks = $user->assigned()
+                    ->where('project_id', $project->id)
+                    ->count();
+            }
         }
         return [
             'user' => $user

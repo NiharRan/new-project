@@ -16,7 +16,7 @@
       </el-table-column>
       <el-table-column label="Name">
         <template #default="scope">
-          <router-link :to="`/users/${scope.row.id}`">{{
+          <router-link :to="scope.row.link">{{
             scope.row.full_name
           }}</router-link>
         </template>
@@ -25,7 +25,10 @@
       <el-table-column label="Phone" prop="phone"> </el-table-column>
       <el-table-column label="Projects" prop="total_projects">
       </el-table-column>
-      <el-table-column label="Tasks" prop="total_tasks"> </el-table-column>
+      <el-table-column label="Assigned To" prop="total_assigned_tasks">
+      </el-table-column>
+      <el-table-column label="Assigned By" prop="total_assigned_by_tasks">
+      </el-table-column>
       <el-table-column align="right">
         <template #default="scope">
           <el-button size="mini" @click="handleEdit(scope.row)">Edit</el-button>
@@ -84,7 +87,6 @@ export default {
       }
     };
     fetchUsers();
-    
 
     const { formatDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);

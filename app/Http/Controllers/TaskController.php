@@ -28,12 +28,16 @@ class TaskController extends Controller
             $project = $request->project;
             $tasks = $tasks->where('project_id', "'%$project%");
         }
-        if ($request->has('user') && $request->user != '') {
-            $user = $request->user;
-            $tasks = $tasks->where('user_id', "'%$user%");
+        if ($request->has('to') && $request->to != '') {
+            $to = $request->to;
+            $tasks = $tasks->where('assign_to', "'%$to%");
+        }
+        if ($request->has('by') && $request->by != '') {
+            $by = $request->by;
+            $tasks = $tasks->where('assign_by', "'%$by%");
         }
 
-        $tasks = $tasks->with(['project', 'user'])->paginate();
+        $tasks = $tasks->with(['project', 'to'])->paginate();
         return [
             'tasks' => $tasks
         ];
@@ -49,7 +53,8 @@ class TaskController extends Controller
 
         $data['name'] = $request->name;
         $data['project_id'] = $request->project;
-        $data['user_id'] = $request->user;
+        $data['assign_to'] = $request->user;
+        $data['assign_by'] = 1;
         $data = wp_unslash($data);
         $task = Task::create($data);
 
@@ -80,7 +85,8 @@ class TaskController extends Controller
         $task->fill([
             'name' => $data['name'],
             'project_id' => $data['project'],
-            'user_id' => $data['user'],
+            'assign_to' => $data['user'],
+            'assign_by' => 1,
             'status' => $data['status'],
         ]);
         $task->save();

@@ -16,20 +16,19 @@
       </el-table-column>
       <el-table-column label="Name">
         <template #default="scope">
-          <router-link :to="`/projects/${scope.row.id}`">{{
-            scope.row.name
-          }}</router-link>
+          <router-link :to="scope.row.link">{{ scope.row.name }}</router-link>
         </template>
       </el-table-column>
       <el-table-column label="Tasks" prop="total_tasks"> </el-table-column>
       <el-table-column label="Assigned To">
         <template #default="scope">
-          <div>
+          <div style="display: flex; gap: 15px">
             <router-link
+              class="user-tag"
               v-for="(user, key) in scope.row.users"
               :key="key"
               :to="user.link"
-              >{{ user.name }}</router-link
+              >{{ user.full_name }}</router-link
             >
           </div>
         </template>
@@ -96,10 +95,16 @@ export default {
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
 
+    const getUsers = function () {
+      return formData.users.map((row) => row.id);
+    };
+
     const handleSubmit = async function () {
       const url =
         editable.value == true ? `projects/${formData.id}` : "projects";
       let response = null;
+      let users = getUsers();
+      formData.users = users;
       try {
         if (editable.value == true) {
           response = await Rest.put(url, formData);
@@ -159,7 +164,9 @@ export default {
       formatDate,
       notify,
       clearData,
+      getUsers,
     };
   },
 };
 </script>
+
