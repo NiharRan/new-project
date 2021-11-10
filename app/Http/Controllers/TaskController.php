@@ -3,10 +3,13 @@
 namespace NewProject\App\Http\Controllers;
 
 use NewProject\App\Models\Task;
+use NewProject\App\Rules\TaskRule;
+use NewProject\App\Traits\ValidatorTrait;
 use NewProject\Framework\Request\Request;
 
 class TaskController extends Controller
 {
+    use ValidatorTrait;
     public function index(Request $request)
     {
 
@@ -45,11 +48,9 @@ class TaskController extends Controller
 
     public function save(Request $request)
     {
-        $this->validate($request->all(), [
-            'name' => 'required',
-            'project' => 'required',
-            'user' => 'required',
-        ]);
+        $rules = TaskRule::$rules;
+        $messages = TaskRule::$messages;
+        $this->validateData($request->all(), $rules, $messages);
 
         $data['name'] = $request->name;
         $data['project_id'] = $request->project;
@@ -75,11 +76,9 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $this->validate($data, [
-            'name' => 'required',
-            'project' => 'required',
-            'user' => 'required',
-        ]);
+        $rules = TaskRule::$rules;
+        $messages = TaskRule::$messages;
+        $this->validateData($data, $rules, $messages);
 
         $task = Task::findOrFail($id);
         $task->fill([

@@ -64,6 +64,7 @@ import { ref, reactive } from "vue";
 import {
   useModal,
   useProject,
+  useErrors,
   useUser,
   useDateTime,
   useNotification,
@@ -78,7 +79,7 @@ export default {
   name: "Project",
   setup() {
     let formData = reactive(Helper.defaultFormData());
-    let errors = reactive({ name: "" });
+    let errors = ref({});
     let visible = ref(false);
     let editable = ref(false);
     let search = ref("");
@@ -94,6 +95,7 @@ export default {
     const { formatDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
+    const { handleErrors } = useErrors(errors);
 
     const getUsers = function () {
       return formData.users.map((row) => row.id);
@@ -118,7 +120,7 @@ export default {
           handleModal(false);
         }
       } catch (error) {
-        errors = error.responseJSON;
+        handleErrors(error);
         ElNotification(notify("Oops", error.statusText, "error"));
       }
     };
@@ -144,6 +146,7 @@ export default {
     };
 
     const clearData = function () {
+      errors.value = {};
       handleEdit(Helper.defaultFormData());
       handleModal(false);
     };
@@ -169,4 +172,3 @@ export default {
   },
 };
 </script>
-

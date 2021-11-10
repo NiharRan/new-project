@@ -25,7 +25,7 @@
       <el-table-column label="Phone" prop="phone"> </el-table-column>
       <el-table-column label="Projects" prop="total_projects">
       </el-table-column>
-      <el-table-column label="Assigned To" prop="total_assigned_tasks">
+      <el-table-column label="Assigned Tasks" prop="total_assigned_tasks">
       </el-table-column>
       <el-table-column label="Assigned By" prop="total_assigned_by_tasks">
       </el-table-column>
@@ -61,6 +61,7 @@ import {
   useFetch,
   useDateTime,
   useNotification,
+  useErrors,
 } from "../../composables";
 import AddEditDialog from "./AddEditDialog.vue";
 import { ElNotification } from "element-plus";
@@ -72,7 +73,7 @@ export default {
   name: "Project",
   setup() {
     let formData = reactive(Helper.defaultFormData());
-    let errors = reactive({ name: "" });
+    let errors = ref({});
     let visible = ref(false);
     let editable = ref(false);
     let search = ref("");
@@ -91,6 +92,7 @@ export default {
     const { formatDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
+    const { handleErrors } = useErrors(errors);
 
     const handleSubmit = async function () {
       const url = editable.value == true ? `users/${formData.id}` : "users";
@@ -108,7 +110,7 @@ export default {
           handleModal(false);
         }
       } catch (error) {
-        errors = error.responseJSON;
+        handleErrors(error);
         ElNotification(notify("Oops", error.statusText, "error"));
       }
     };
@@ -136,6 +138,7 @@ export default {
     };
 
     const clearData = function () {
+      errors.value = {};
       handleEdit(Helper.defaultFormData());
       handleModal(false);
     };

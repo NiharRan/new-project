@@ -4,10 +4,13 @@ namespace NewProject\App\Http\Controllers;
 
 use NewProject\App\Models\Project;
 use NewProject\App\Models\Task;
+use NewProject\App\Rules\ProjectRule;
+use NewProject\App\Traits\ValidatorTrait;
 use NewProject\Framework\Request\Request;
 
 class ProjectController extends Controller
 {
+    use ValidatorTrait;
     public function index(Request $request)
     {
 
@@ -36,9 +39,9 @@ class ProjectController extends Controller
 
     public function save(Request $request)
     {
-        $this->validate($request->all(), [
-            'name' => 'required'
-        ]);
+        $rules = ProjectRule::$rules;
+        $messages = ProjectRule::$messages;
+        $this->validateData($request->all(), $rules, $messages);
 
         $data['name'] = $request->name;
         $data = wp_unslash($data);
@@ -70,10 +73,9 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $this->validate($data, [
-            'name' => 'required',
-            'users' => 'required|array'
-        ]);
+        $rules = ProjectRule::$rules;
+        $messages = ProjectRule::$messages;
+        $this->validateData($data, $rules, $messages);
 
         $project = Project::findOrFail($id);
         $project->fill([

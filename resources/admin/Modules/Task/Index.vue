@@ -68,6 +68,7 @@ import {
   useTask,
   useDateTime,
   useNotification,
+  useErrors,
 } from "../../composables";
 import AddEditDialog from "./AddEditDialog.vue";
 import { ElNotification } from "element-plus";
@@ -79,7 +80,7 @@ export default {
   name: "Task",
   setup() {
     let formData = reactive(Helper.defaultFormData());
-    let errors = reactive({ name: "" });
+    let errors = ref({});
     let visible = ref(false);
     let editable = ref(false);
     let search = ref("");
@@ -101,6 +102,7 @@ export default {
     const { formatDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
+    const { handleErrors } = useErrors(errors);
 
     const getProject = function () {
       return typeof formData.project === "object" && formData.project != null
@@ -135,7 +137,7 @@ export default {
           ElNotification(notify("Tasks", response.message, "success"));
         }
       } catch (error) {
-        errors = error.responseJSON;
+        handleErrors(error);
         ElNotification(notify("Oops", error.statusText, "error"));
       }
     };
@@ -165,6 +167,7 @@ export default {
     };
 
     const clearData = function () {
+      errors.value = {};
       handleEdit(Helper.defaultFormData());
       handleModal(false);
     };

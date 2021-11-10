@@ -6,17 +6,18 @@
     @click="$emit('close', false)"
   >
     <div>
-      <label for="name">Name</label>
+      <label-block class="mt-0" :text="'Name'" :isRequired="true" />
       <el-input
         name="name"
         placeholder="Task name"
         required
         v-model="form.name"
       ></el-input>
+      <error-block :errors="errors" :field="'name'" />
     </div>
 
     <div v-if="!hideColumns.project">
-      <label for="project">Project</label>
+      <label-block :text="'Project'" :isRequired="true" />
       <el-select
         v-model="form.project"
         placeholder="Select"
@@ -31,10 +32,11 @@
         >
         </el-option>
       </el-select>
+      <error-block :errors="errors" :field="'project'" />
     </div>
 
     <div v-if="!hideColumns.user">
-      <label for="user">User</label>
+      <label-block :text="'User'" :isRequired="true" />
       <el-select v-model="form.user" placeholder="Select" value-key="id">
         <el-option
           v-for="item in users"
@@ -44,6 +46,7 @@
         >
         </el-option>
       </el-select>
+      <error-block :errors="errors" :field="'user'" />
     </div>
 
     <span slot="footer" class="dialog-footer">
@@ -54,13 +57,17 @@
 </template>
 
 <script>
+import ErrorBlock from "../../Components/ErrorBlock.vue";
+import LabelBlock from "../../Components/LabelBlock.vue";
 export default {
+  components: { LabelBlock, ErrorBlock },
   props: {
     editable: { type: Boolean, default: false },
     visible: { type: Boolean, default: false },
-    form: { type: Object, default: () => null },
-    projects: { type: Object, default: () => null },
-    users: { type: Object, default: () => null },
+    form: { type: Object, default: () => {} },
+    projects: { type: Object, default: () => {} },
+    users: { type: Object, default: () => {} },
+    errors: { type: Object, default: () => {} },
     hideColumns: { type: Object, default: () => {} },
   },
   emits: ["close", "save", "fetchUsers"],

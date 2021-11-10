@@ -3,10 +3,13 @@
 namespace NewProject\App\Http\Controllers;
 
 use NewProject\App\Models\User;
+use NewProject\App\Rules\UserRule;
+use NewProject\App\Traits\ValidatorTrait;
 use NewProject\Framework\Request\Request;
 
 class UserController extends Controller
 {
+    use ValidatorTrait;
     public function index(Request $request)
     {
 
@@ -38,12 +41,9 @@ class UserController extends Controller
 
     public function save(Request $request)
     {
-        $this->validate($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-        ]);
+        $rules = UserRule::$rules;
+        $messages = UserRule::$messages;
+        $this->validateData($request->all(), $rules, $messages);
 
         $data['first_name'] = $request->first_name;
         $data['last_name'] = $request->last_name;
@@ -76,12 +76,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $this->validate($data, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-        ]);
+        $rules = UserRule::$rules;
+        $messages = UserRule::$messages;
+        $this->validateData($data, $rules, $messages);
+
 
         $user = User::findOrFail($id);
         $user->fill([

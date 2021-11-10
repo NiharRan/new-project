@@ -6,19 +6,22 @@
     @click="$emit('close', false)"
   >
     <div style="margin-bottom: 15px">
-      <label for="name">Name</label>
+      <label-block class="mt-0" :text="'Name'" :isRequired="true" />
       <el-input
         name="name"
         placeholder="Project name"
+        :class="[errors.name ? 'invalid' : '']"
         required
         v-model="form.name"
       ></el-input>
+      <error-block :errors="errors" :field="'name'" />
     </div>
 
     <div style="margin-bottom: 15px">
-      <label for="users">Asigned To</label>
+      <label-block :text="'Asigned To'" :isRequired="true" />
       <el-select
         v-model="form.users"
+        :class="[errors.users ? 'invalid' : '']"
         multiple
         placeholder="Select"
         value-key="id"
@@ -31,6 +34,7 @@
         >
         </el-option>
       </el-select>
+      <error-block :errors="errors" :field="'users'" />
     </div>
 
     <span slot="footer" class="dialog-footer">
@@ -41,8 +45,14 @@
 </template>
 
 <script>
+import ErrorBlock from "../../Components/ErrorBlock.vue";
+import LabelBlock from "../../Components/LabelBlock.vue";
 export default {
   props: ["editable", "visible", "form", "errors", "users"],
   emits: ["close", "save"],
+  components: {
+    ErrorBlock,
+    LabelBlock,
+  },
 };
 </script>

@@ -2,29 +2,29 @@
 
 
 $router->prefix('projects')->group(function ($router) {
-    $router->get('/', 'ProjectController@index');
+    $router->get('/', 'ProjectController@index'); 
     $router->post('/', 'ProjectController@save');
-    $router->get('/{slug}', 'ProjectController@get')->int('id');
-    $router->put('/{projectId}', 'ProjectController@update')->int('id');
-    $router->delete('/{projectId}', 'ProjectController@destroy')->int('id');
+    $router->get('/{slug}', 'ProjectController@get');
+    $router->put('/{id}', 'ProjectController@update')->int('id');
+    $router->delete('/{id}', 'ProjectController@destroy')->int('id');
 
-    $router->get('/users/{projectId}', 'ProjectController@users');
+    $router->get('/users/{id}', 'ProjectController@users');
 });
 
 $router->prefix('tasks')->group(function ($router) {
     $router->get('/', 'TaskController@index');
     $router->post('/', 'TaskController@save');
-    $router->get('/{taskId}', 'TaskController@get')->int('id');
-    $router->put('/{taskId}', 'TaskController@update')->int('id');
-    $router->delete('/{taskId}', 'TaskController@destroy')->int('id');
+    $router->get('/{id}', 'TaskController@get')->int('id');
+    $router->put('/{id}', 'TaskController@update')->int('id');
+    $router->delete('/{id}', 'TaskController@destroy')->int('id');
 });
 
 $router->prefix('users')->group(function ($router) {
     $router->get('/', 'UserController@index');
     $router->post('/', 'UserController@save');
-    $router->get('/{slug}', 'UserController@get')->int('id');
-    $router->put('/{userId}', 'UserController@update')->int('id');
-    $router->delete('/{userId}', 'UserController@destroy')->int('id');
+    $router->get('/{slug}', 'UserController@get');
+    $router->put('/{id}', 'UserController@update')->int('id');
+    $router->delete('/{id}', 'UserController@destroy')->int('id');
 });
 
 /**
