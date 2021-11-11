@@ -20,7 +20,7 @@
     >
       <el-table-column label="Date" prop="created_at">
         <template #default="scope">
-          {{ formatDate(scope.row.created_at) }}
+          {{ longLocalDate(scope.row.created_at) }}
         </template>
       </el-table-column>
       <el-table-column label="Name">
@@ -58,12 +58,8 @@
 <script>
 import { useRoute, useRouter } from "vue-router";
 import { ref, reactive } from "vue";
-import {
-  useModal,
-  useFetch,
-  useDateTime,
-  useNotification,
-} from "../../composables";
+import { useModal, useFetch } from "../../composables";
+import { useNotification, useDateTime } from "@/admin/Bits/Composables";
 import AddEditDialog from "../Project/AddEditDialog.vue";
 import { ElNotification } from "element-plus";
 import Helper from "../Project/helper";
@@ -97,7 +93,7 @@ export default {
       router.push("/users");
     };
 
-    const { formatDate } = useDateTime();
+    const { longLocalDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
 
@@ -160,7 +156,7 @@ export default {
       clearData,
       handleEdit,
       handleSubmit,
-      formatDate,
+      longLocalDate,
       handleModal,
     };
   },

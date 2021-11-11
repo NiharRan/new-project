@@ -11,7 +11,7 @@
     >
       <el-table-column label="Date" prop="created_at">
         <template #default="scope">
-          {{ formatDate(scope.row.created_at) }}
+          {{ longLocalDate(scope.row.created_at) }}
         </template>
       </el-table-column>
       <el-table-column label="Name">
@@ -55,23 +55,18 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
-import {
-  useModal,
-  useFetch,
-  useDateTime,
-  useNotification,
-  useErrors,
-} from "../../composables";
+import { ref, reactive, inject } from "vue";
+import { useModal, useFetch, useErrors } from "../../composables";
+import { useNotification, useDateTime } from "@/admin/Bits/Composables";
 import AddEditDialog from "./AddEditDialog.vue";
 import { ElNotification } from "element-plus";
-import Rest from "@/admin/Bits/Rest";
 import Helper from "./helper";
 
 export default {
   components: { AddEditDialog },
   name: "Project",
   setup() {
+    const $rest = inject("$rest");
     let formData = reactive(Helper.defaultFormData());
     let errors = ref({});
     let visible = ref(false);
@@ -89,7 +84,7 @@ export default {
     };
     fetchUsers();
 
-    const { formatDate } = useDateTime();
+    const { longLocalDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
     const { notify } = useNotification();
     const { handleErrors } = useErrors(errors);
@@ -99,9 +94,9 @@ export default {
       let response = null;
       try {
         if (editable.value == true) {
-          response = await Rest.put(url, formData);
+          response = await $rest.put(url, formData);
         } else {
-          response = await Rest.post(url, formData);
+          response = await $rest.post(url, formData);
         }
         if (response) {
           fetchUsers();
@@ -127,7 +122,7 @@ export default {
     };
     const handleDelete = async function (row) {
       try {
-        const response = await Rest.delete(`users/${row.id}`);
+        const response = await $rest.delete(`users/${row.id}`);
         if (response) {
           fetchUsers();
           ElNotification(notify("Users", response.message, "success"));
@@ -156,7 +151,7 @@ export default {
       handleDelete,
       handleSubmit,
       handleModal,
-      formatDate,
+      longLocalDate,
       notify,
       clearData,
     };

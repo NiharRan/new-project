@@ -41,6 +41,9 @@ class TaskController extends Controller
         }
 
         $tasks = $tasks->with(['project', 'to'])->paginate();
+
+        $tasks = apply_filters('new-project/tasks', $tasks);
+        
         return [
             'tasks' => $tasks
         ];
@@ -57,6 +60,7 @@ class TaskController extends Controller
         $data['assign_to'] = $request->user;
         $data['assign_by'] = 1;
         $data = wp_unslash($data);
+        do_action('new-project/before_task_created', $data);
         $task = Task::create($data);
 
         return [

@@ -27926,13 +27926,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
-/* harmony import */ var _Task_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Task/AddEditDialog.vue */ "./resources/admin/Modules/Task/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _Task_helper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Task/helper */ "./resources/admin/Modules/Task/helper.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
+/* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
+/* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
+/* harmony import */ var _Task_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Task/AddEditDialog.vue */ "./resources/admin/Modules/Task/AddEditDialog.vue");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var _Task_helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Task/helper */ "./resources/admin/Modules/Task/helper.js");
+/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -27948,15 +27949,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AddEditDialog: _Task_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    AddEditDialog: _Task_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   setup: function setup() {
-    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)();
-    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRouter)();
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRoute)();
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRouter)();
     var slug = route.params.slug;
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_Task_helper__WEBPACK_IMPORTED_MODULE_4__["default"].defaultFormData());
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_Task_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       name: ""
     });
@@ -27966,10 +27968,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var users = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
 
-    var _useProject = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useProject)(loading),
+    var _useProject = (0,_composables__WEBPACK_IMPORTED_MODULE_3__.useProject)(loading),
         fetchProjectDetails = _useProject.fetchProjectDetails;
 
-    var _useUser = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useUser)(loading),
+    var _useUser = (0,_composables__WEBPACK_IMPORTED_MODULE_3__.useUser)(loading),
         fetchUsers = _useUser.fetchUsers;
 
     fetchProjectDetails("projects/".concat(slug), details);
@@ -27981,13 +27983,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       router.push("/projects");
     };
 
-    var _useDateTime = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useDateTime)(),
-        formatDate = _useDateTime.formatDate;
+    var _useDateTime = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_2__.useDateTime)(),
+        longLocalDate = _useDateTime.longLocalDate;
 
-    var _useModal = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useModal)(visible, editable),
+    var _useModal = (0,_composables__WEBPACK_IMPORTED_MODULE_3__.useModal)(visible, editable),
         handleModal = _useModal.handleModal;
 
-    var _useNotification = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useNotification)(),
+    var _useNotification = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_2__.useNotification)(),
         notify = _useNotification.notify;
 
     var getUser = function getUser() {
@@ -28014,7 +28016,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 }
 
                 _context.next = 9;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].put(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"].put(url, formData);
 
               case 9:
                 response = _context.sent;
@@ -28023,7 +28025,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
               case 12:
                 _context.next = 14;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].post(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"].post(url, formData);
 
               case 14:
                 response = _context.sent;
@@ -28031,9 +28033,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 15:
                 if (response) {
                   fetchProjectDetails("projects/".concat(slug), details);
-                  handleEdit(_Task_helper__WEBPACK_IMPORTED_MODULE_4__["default"].defaultFormData(details.value.id));
+                  handleEdit(_Task_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData(details.value.id));
                   handleModal(false);
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context.next = 22;
@@ -28043,7 +28045,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 _context.prev = 18;
                 _context.t0 = _context["catch"](5);
                 errors = _context.t0.responseJSON;
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
 
               case 22:
               case "end":
@@ -28077,14 +28079,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("tasks/".concat(row.id));
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("tasks/".concat(row.id));
 
               case 3:
                 response = _context2.sent;
 
                 if (response) {
                   fetchTasks();
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context2.next = 10;
@@ -28093,7 +28095,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28109,7 +28111,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }();
 
     var clearData = function clearData() {
-      handleEdit(_Task_helper__WEBPACK_IMPORTED_MODULE_4__["default"].defaultFormData());
+      handleEdit(_Task_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
       handleModal(false);
     };
 
@@ -28125,7 +28127,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       clearData: clearData,
       handleEdit: handleEdit,
       handleSubmit: handleSubmit,
-      formatDate: formatDate,
+      longLocalDate: longLocalDate,
       handleModal: handleModal,
       fetchProjectDetails: fetchProjectDetails
     };
@@ -28149,10 +28151,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
-/* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/Project/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Project/helper.js");
+/* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
+/* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/Project/AddEditDialog.vue");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Project/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -28165,13 +28168,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   name: "Project",
   setup: function setup() {
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var visible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var editable = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
@@ -28191,13 +28195,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       dropdown: true
     });
 
-    var _useDateTime = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useDateTime)(),
-        formatDate = _useDateTime.formatDate;
+    var _useDateTime = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useDateTime)(),
+        longLocalDate = _useDateTime.longLocalDate;
 
     var _useModal = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useModal)(visible, editable),
         handleModal = _useModal.handleModal;
 
-    var _useNotification = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useNotification)(),
+    var _useNotification = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useNotification)(),
         notify = _useNotification.notify;
 
     var _useErrors = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useErrors)(errors),
@@ -28228,7 +28232,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context.next = 8;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"].put(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].put(url, formData);
 
               case 8:
                 response = _context.sent;
@@ -28237,7 +28241,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 11:
                 _context.next = 13;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"].post(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].post(url, formData);
 
               case 13:
                 response = _context.sent;
@@ -28245,8 +28249,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 14:
                 if (response) {
                   fetchProjects("projects", projects);
-                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Projects", response.message, "success"));
+                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Projects", response.message, "success"));
                   handleModal(false);
                 }
 
@@ -28257,7 +28261,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 17;
                 _context.t0 = _context["catch"](4);
                 handleErrors(_context.t0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
 
               case 21:
               case "end":
@@ -28290,14 +28294,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"]["delete"]("projects/".concat(row.id));
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("projects/".concat(row.id));
 
               case 3:
                 response = _context2.sent;
 
                 if (response) {
                   fetchProjects("projects", projects);
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Projects", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Projects", response.message, "success"));
                 }
 
                 _context2.next = 10;
@@ -28306,7 +28310,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28323,7 +28327,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var clearData = function clearData() {
       errors.value = {};
-      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
       handleModal(false);
     };
 
@@ -28340,7 +28344,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handleDelete: handleDelete,
       handleSubmit: handleSubmit,
       handleModal: handleModal,
-      formatDate: formatDate,
+      longLocalDate: longLocalDate,
       notify: notify,
       clearData: clearData,
       getUsers: getUsers
@@ -28420,10 +28424,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
-/* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/Task/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Task/helper.js");
+/* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
+/* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/Task/AddEditDialog.vue");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Task/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -28438,13 +28443,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   name: "Task",
   setup: function setup() {
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var visible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var editable = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
@@ -28472,13 +28478,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       fetchProjectUsers(url, users);
     };
 
-    var _useDateTime = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useDateTime)(),
-        formatDate = _useDateTime.formatDate;
+    var _useDateTime = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useDateTime)(),
+        longLocalDate = _useDateTime.longLocalDate;
 
     var _useModal = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useModal)(visible, editable),
         handleModal = _useModal.handleModal;
 
-    var _useNotification = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useNotification)(),
+    var _useNotification = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useNotification)(),
         notify = _useNotification.notify;
 
     var _useErrors = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useErrors)(errors),
@@ -28513,7 +28519,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 }
 
                 _context.next = 10;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"].put(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].put(url, formData);
 
               case 10:
                 response = _context.sent;
@@ -28522,7 +28528,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
               case 13:
                 _context.next = 15;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"].post(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].post(url, formData);
 
               case 15:
                 response = _context.sent;
@@ -28531,8 +28537,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 if (response) {
                   handleModal(false);
                   fetchTasks("tasks", tasks);
-                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Tasks", response.message, "success"));
+                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context.next = 23;
@@ -28542,7 +28548,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 _context.prev = 19;
                 _context.t0 = _context["catch"](6);
                 handleErrors(_context.t0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
 
               case 23:
               case "end":
@@ -28580,14 +28586,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"]["delete"]("tasks/".concat(row.id));
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("tasks/".concat(row.id));
 
               case 3:
                 response = _context2.sent;
 
                 if (response) {
                   fetchTasks("tasks", tasks);
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Tasks", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context2.next = 10;
@@ -28596,7 +28602,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28613,7 +28619,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
     var clearData = function clearData() {
       errors.value = {};
-      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
       handleModal(false);
     };
 
@@ -28631,7 +28637,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       handleDelete: handleDelete,
       handleSubmit: handleSubmit,
       handleModal: handleModal,
-      formatDate: formatDate,
+      longLocalDate: longLocalDate,
       notify: notify,
       clearData: clearData,
       fetchProjectUsers: fetchProjectUsers,
@@ -28681,13 +28687,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
-/* harmony import */ var _Project_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Project/AddEditDialog.vue */ "./resources/admin/Modules/Project/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _Project_helper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Project/helper */ "./resources/admin/Modules/Project/helper.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
+/* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
+/* harmony import */ var _Project_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Project/AddEditDialog.vue */ "./resources/admin/Modules/Project/AddEditDialog.vue");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var _Project_helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Project/helper */ "./resources/admin/Modules/Project/helper.js");
+/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -28701,15 +28708,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AddEditDialog: _Project_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    AddEditDialog: _Project_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   setup: function setup() {
-    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)();
-    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRouter)();
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRoute)();
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRouter)();
     var slug = route.params.slug;
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_Project_helper__WEBPACK_IMPORTED_MODULE_4__["default"].defaultFormData(slug));
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_Project_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData(slug));
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       name: ""
     });
@@ -28757,13 +28765,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       router.push("/users");
     };
 
-    var _useDateTime = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useDateTime)(),
-        formatDate = _useDateTime.formatDate;
+    var _useDateTime = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useDateTime)(),
+        longLocalDate = _useDateTime.longLocalDate;
 
     var _useModal = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useModal)(visible, editable),
         handleModal = _useModal.handleModal;
 
-    var _useNotification = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useNotification)(),
+    var _useNotification = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useNotification)(),
         notify = _useNotification.notify;
 
     var handleSubmit = /*#__PURE__*/function () {
@@ -28783,7 +28791,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 6;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].put(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"].put(url, formData);
 
               case 6:
                 response = _context2.sent;
@@ -28792,7 +28800,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].post(url, formData);
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"].post(url, formData);
 
               case 11:
                 response = _context2.sent;
@@ -28800,8 +28808,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 12:
                 if (response) {
                   fetchUserDetails();
-                  handleEdit(_Project_helper__WEBPACK_IMPORTED_MODULE_4__["default"].defaultFormData());
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Projects", response.message, "success"));
+                  handleEdit(_Project_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Projects", response.message, "success"));
                   handleModal(false);
                 }
 
@@ -28812,7 +28820,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.prev = 15;
                 _context2.t0 = _context2["catch"](2);
                 errors = _context2.t0.responseJSON;
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 19:
               case "end":
@@ -28845,14 +28853,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("projects/".concat(row.id));
+                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("projects/".concat(row.id));
 
               case 3:
                 response = _context3.sent;
 
                 if (response) {
                   fetchProjects();
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Projects", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Projects", response.message, "success"));
                 }
 
                 _context3.next = 10;
@@ -28861,7 +28869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 7:
                 _context3.prev = 7;
                 _context3.t0 = _context3["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context3.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Oops", _context3.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28877,7 +28885,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }();
 
     var clearData = function clearData() {
-      handleEdit(_Project_helper__WEBPACK_IMPORTED_MODULE_4__["default"].defaultFormData());
+      handleEdit(_Project_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
       handleModal(false);
     };
 
@@ -28893,7 +28901,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       clearData: clearData,
       handleEdit: handleEdit,
       handleSubmit: handleSubmit,
-      formatDate: formatDate,
+      longLocalDate: longLocalDate,
       handleModal: handleModal
     };
   }
@@ -28916,9 +28924,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
-/* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/User/AddEditDialog.vue");
+/* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
+/* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/User/AddEditDialog.vue");
 /* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/User/helper.js");
 
 
@@ -28934,10 +28942,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   name: "Project",
   setup: function setup() {
+    var $rest = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)("$rest");
     var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var visible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
@@ -28981,13 +28990,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     fetchUsers();
 
-    var _useDateTime = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useDateTime)(),
-        formatDate = _useDateTime.formatDate;
+    var _useDateTime = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useDateTime)(),
+        longLocalDate = _useDateTime.longLocalDate;
 
     var _useModal = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useModal)(visible, editable),
         handleModal = _useModal.handleModal;
 
-    var _useNotification = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useNotification)(),
+    var _useNotification = (0,_admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__.useNotification)(),
         notify = _useNotification.notify;
 
     var _useErrors = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useErrors)(errors),
@@ -29010,7 +29019,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 6;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"].put(url, formData);
+                return $rest.put(url, formData);
 
               case 6:
                 response = _context2.sent;
@@ -29019,7 +29028,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"].post(url, formData);
+                return $rest.post(url, formData);
 
               case 11:
                 response = _context2.sent;
@@ -29074,7 +29083,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_4__["default"]["delete"]("users/".concat(row.id));
+                return $rest["delete"]("users/".concat(row.id));
 
               case 3:
                 response = _context3.sent;
@@ -29124,7 +29133,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handleDelete: handleDelete,
       handleSubmit: handleSubmit,
       handleModal: handleModal,
-      formatDate: formatDate,
+      longLocalDate: longLocalDate,
       notify: notify,
       clearData: clearData
     };
@@ -29482,7 +29491,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             prop: "created_at"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(scope.row.created_at)), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.longLocalDate(scope.row.created_at)), 1
               /* TEXT */
               )];
             }),
@@ -29692,7 +29701,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             prop: "created_at"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(scope.row.created_at)), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.longLocalDate(scope.row.created_at)), 1
               /* TEXT */
               )];
             }),
@@ -30076,7 +30085,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             prop: "created_at"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(scope.row.created_at)), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.longLocalDate(scope.row.created_at)), 1
               /* TEXT */
               )];
             }),
@@ -30493,7 +30502,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             prop: "created_at"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(scope.row.created_at)), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.longLocalDate(scope.row.created_at)), 1
               /* TEXT */
               )];
             }),
@@ -30669,7 +30678,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             prop: "created_at"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(scope.row.created_at)), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.longLocalDate(scope.row.created_at)), 1
               /* TEXT */
               )];
             }),
@@ -30788,6 +30797,319 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./resources/admin/Bits/Composables/index.js":
+/*!***************************************************!*\
+  !*** ./resources/admin/Bits/Composables/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useNotification": () => (/* reexport safe */ _useNotification__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "useDateTime": () => (/* reexport safe */ _useDateTime__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "useApplication": () => (/* reexport safe */ _useApplication__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   "useStorage": () => (/* reexport safe */ _useStorage__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "useError": () => (/* reexport safe */ _useError__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   "useText": () => (/* reexport safe */ _useText__WEBPACK_IMPORTED_MODULE_5__["default"])
+/* harmony export */ });
+/* harmony import */ var _useNotification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useNotification */ "./resources/admin/Bits/Composables/useNotification.js");
+/* harmony import */ var _useDateTime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useDateTime */ "./resources/admin/Bits/Composables/useDateTime.js");
+/* harmony import */ var _useApplication__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useApplication */ "./resources/admin/Bits/Composables/useApplication.js");
+/* harmony import */ var _useStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useStorage */ "./resources/admin/Bits/Composables/useStorage.js");
+/* harmony import */ var _useError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useError */ "./resources/admin/Bits/Composables/useError.js");
+/* harmony import */ var _useText__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./useText */ "./resources/admin/Bits/Composables/useText.js");
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./resources/admin/Bits/Composables/useApplication.js":
+/*!************************************************************!*\
+  !*** ./resources/admin/Bits/Composables/useApplication.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var useApplication = function useApplication() {
+  var setTitle = function setTitle(title) {
+    document.title = title;
+  };
+
+  return {
+    setTitle: setTitle
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useApplication);
+
+/***/ }),
+
+/***/ "./resources/admin/Bits/Composables/useDateTime.js":
+/*!*********************************************************!*\
+  !*** ./resources/admin/Bits/Composables/useDateTime.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+
+var appStartTime = new Date();
+
+var useDateTime = function useDateTime() {
+  var dateTimeFormat = function dateTimeFormat(date, format) {
+    var dateString = date === undefined ? null : date;
+    var dateObj = moment__WEBPACK_IMPORTED_MODULE_0___default()(dateString);
+    return dateObj.isValid() ? dateObj.format(format) : null;
+  };
+
+  var localDate = function localDate(date) {
+    return moment__WEBPACK_IMPORTED_MODULE_0___default().utc(date).local();
+  };
+
+  var longLocalDate = function longLocalDate(date) {
+    return dateTimeFormat(date, "ddd, DD MMM, YYYY");
+  };
+
+  var longLocalDateTime = function longLocalDateTime(date) {
+    return dateTimeFormat(date, "ddd, DD MMM, YYYY hh:mm:ssa");
+  };
+
+  var humanDiffTime = function humanDiffTime(date) {
+    var dateString = date === undefined ? null : date;
+
+    if (!dateString) {
+      return "";
+    }
+
+    var endTime = new Date();
+    var timeDiff = endTime - appStartTime; // in ms
+
+    var dateObj = moment__WEBPACK_IMPORTED_MODULE_0___default()(dateString);
+    return dateObj.from(moment__WEBPACK_IMPORTED_MODULE_0___default()(window.fluentFrameworkAdmin.server_time).add(timeDiff, "milliseconds"));
+  };
+
+  var waitingTime = function waitingTime(time1, time2) {
+    if (!time2 || !time1) {
+      return "";
+    }
+
+    time1 = moment__WEBPACK_IMPORTED_MODULE_0___default()(time1);
+    time2 = moment__WEBPACK_IMPORTED_MODULE_0___default()(time2);
+    return time2.from(time1);
+  };
+
+  return {
+    dateTimeFormat: dateTimeFormat,
+    localDate: localDate,
+    longLocalDate: longLocalDate,
+    longLocalDateTime: longLocalDateTime,
+    humanDiffTime: humanDiffTime,
+    waitingTime: waitingTime
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useDateTime);
+
+/***/ }),
+
+/***/ "./resources/admin/Bits/Composables/useError.js":
+/*!******************************************************!*\
+  !*** ./resources/admin/Bits/Composables/useError.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var useError = function useError() {
+  var handleError = function handleError(response) {
+    if (response.responseJSON) {
+      response = response.responseJSON;
+    }
+
+    var errorMessage = "";
+
+    if (typeof response === "string") {
+      errorMessage = response;
+    } else if (response && response.message) {
+      errorMessage = response.message;
+    } else {
+      errorMessage = convertToText(response);
+    }
+
+    if (!errorMessage) {
+      errorMessage = "Something is wrong!";
+    }
+  };
+
+  var convertToText = function convertToText(obj) {
+    var string = [];
+
+    if (_typeof(obj) === "object" && obj.join === undefined) {
+      for (var prop in obj) {
+        string.push(convertToText(obj[prop]));
+      }
+    } else if (_typeof(obj) === "object" && !(obj.join === undefined)) {
+      for (var _prop in obj) {
+        string.push(convertToText(obj[_prop]));
+      }
+    } else if (typeof obj === "function") {} else if (typeof obj === "string") {
+      string.push(obj);
+    }
+
+    return string.join("<br />");
+  };
+
+  return {
+    handleError: handleError,
+    convertToText: convertToText
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useError);
+
+/***/ }),
+
+/***/ "./resources/admin/Bits/Composables/useNotification.js":
+/*!*************************************************************!*\
+  !*** ./resources/admin/Bits/Composables/useNotification.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var useNotification = function useNotification() {
+  var notify = function notify(title, message, type) {
+    return {
+      title: title,
+      message: message,
+      type: type,
+      position: "bottom-right"
+    };
+  };
+
+  return {
+    notify: notify
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useNotification);
+
+/***/ }),
+
+/***/ "./resources/admin/Bits/Composables/useStorage.js":
+/*!********************************************************!*\
+  !*** ./resources/admin/Bits/Composables/useStorage.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var useStorage = function useStorage() {
+  var getData = function getData(key) {
+    var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var existingData = window.localStorage.getItem("__fluentsupport_data");
+    existingData = JSON.parse(existingData);
+
+    if (!existingData) {
+      return defaultValue;
+    }
+
+    if (existingData[key]) {
+      return existingData[key];
+    }
+
+    return defaultValue;
+  };
+
+  var saveData = function saveData(key, data) {
+    var existingData = window.localStorage.getItem("__fluentsupport_data");
+
+    if (!existingData) {
+      existingData = {};
+    } else {
+      existingData = JSON.parse(existingData);
+    }
+
+    existingData[key] = data;
+    window.localStorage.setItem("__fluentsupport_data", JSON.stringify(existingData));
+  };
+
+  return {
+    getData: getData,
+    saveData: saveData
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useStorage);
+
+/***/ }),
+
+/***/ "./resources/admin/Bits/Composables/useText.js":
+/*!*****************************************************!*\
+  !*** ./resources/admin/Bits/Composables/useText.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var useText = function useText() {
+  var ucFirst = function ucFirst(text) {
+    return text[0].toUpperCase() + text.slice(1).toLowerCase();
+  };
+
+  var ucWords = function ucWords(text) {
+    return (text + "").replace(/^(.)|\s+(.)/g, function ($1) {
+      return $1.toUpperCase();
+    });
+  };
+
+  var slugify = function slugify(text) {
+    return text.toString().toLowerCase().replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\\-]+/g, "") // Remove all non-word chars
+    .replace(/\\-\\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+  };
+
+  return {
+    ucFirst: ucFirst,
+    ucWords: ucWords,
+    slugify: slugify
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useText);
+
+/***/ }),
+
 /***/ "./resources/admin/Bits/FluentFramework.js":
 /*!*************************************************!*\
   !*** ./resources/admin/Bits/FluentFramework.js ***!
@@ -30802,8 +31124,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/admin/Bits/elements */ "./resources/admin/Bits/elements.js");
 /* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/hooks */ "./node_modules/@wordpress/hooks/build-module/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -30818,8 +31138,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
 
 __webpack_require__(/*! moment/locale/en-gb */ "./node_modules/moment/locale/en-gb.js");
 
-moment.locale('en-gb');
-var appStartTime = new Date();
+moment.locale("en-gb");
 
 var FluentFramework = /*#__PURE__*/function () {
   function FluentFramework() {
@@ -30829,9 +31148,7 @@ var FluentFramework = /*#__PURE__*/function () {
     this.addFilter = _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addFilter;
     this.addAction = _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addAction;
     this.applyFilters = _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.applyFilters;
-    this.removeAllActions = _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.removeAllActions; //
-
-    this.$rest = _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"];
+    this.removeAllActions = _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.removeAllActions;
     this.appVars = window.fluentFrameworkAdmin;
     this.app = this.extendVueConstructor();
   }
@@ -30840,44 +31157,20 @@ var FluentFramework = /*#__PURE__*/function () {
     key: "extendVueConstructor",
     value: function extendVueConstructor() {
       var self = this;
-      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].mixin({
-        methods: {
-          addFilter: _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addFilter,
-          applyFilters: _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.applyFilters,
-          doAction: _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.doAction,
-          addAction: _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addAction,
-          removeAllActions: _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.removeAllActions,
-          longLocalDate: self.longLocalDate,
-          longLocalDateTime: self.longLocalDateTime,
-          dateTimeFormat: self.dateTimeFormat,
-          localDate: self.localDate,
-          ucFirst: self.ucFirst,
-          ucWords: self.ucWords,
-          slugify: self.slugify,
-          moment: moment,
-          $get: self.$get,
-          $post: self.$post,
-          $del: self.$del,
-          $put: self.$put,
-          $patch: self.$patch,
-          $handleError: self.handleError,
-          $saveData: self.saveData,
-          $getData: self.getData,
-          $timeDiff: self.humanDiffTime,
-          $waitingTime: self.waitingTime,
-          convertToText: self.convertToText,
-          $setTitle: function $setTitle(title) {
-            document.title = title;
-          }
-        }
-      });
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("$rest", _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"]);
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("$moment", moment);
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("addFilter", _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addFilter);
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("applyFilters", _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.applyFilters);
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("doAction", _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.doAction);
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("addAction", _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addAction);
+      _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"].provide("removeAllActions", _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.removeAllActions);
       return _admin_Bits_elements__WEBPACK_IMPORTED_MODULE_0__["default"];
     }
   }, {
     key: "getExtraComponents",
     value: function getExtraComponents() {
       return {
-        'ticket-header': {
+        "ticket-header": {
           template: "<h1>OK</h1>"
         }
       };
@@ -30897,7 +31190,7 @@ var FluentFramework = /*#__PURE__*/function () {
         return;
       }
 
-      this.addFilter('fluent_framework_top_menus', this.appVars.slug, function (menus) {
+      this.addFilter("fluent_framework_top_menus", this.appVars.slug, function (menus) {
         menus = menus.filter(function (m) {
           return m.route !== route.name;
         });
@@ -30907,191 +31200,13 @@ var FluentFramework = /*#__PURE__*/function () {
         });
         return menus;
       });
-      this.addFilter('fluent_framework_global_routes', this.appVars.slug, function (routes) {
+      this.addFilter("fluent_framework_global_routes", this.appVars.slug, function (routes) {
         routes = routes.filter(function (r) {
           return r.name !== route.name;
         });
         routes.push(route);
         return routes;
       });
-    }
-  }, {
-    key: "$get",
-    value: function $get(url) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"].get(url, options);
-    }
-  }, {
-    key: "$post",
-    value: function $post(url) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"].post(url, options);
-    }
-  }, {
-    key: "$del",
-    value: function $del(url) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](url, options);
-    }
-  }, {
-    key: "$put",
-    value: function $put(url) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"].put(url, options);
-    }
-  }, {
-    key: "$patch",
-    value: function $patch(url) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"].patch(url, options);
-    }
-  }, {
-    key: "dateTimeFormat",
-    value: function dateTimeFormat(date, format) {
-      var dateString = date === undefined ? null : date;
-      var dateObj = moment(dateString);
-      return dateObj.isValid() ? dateObj.format(format) : null;
-    }
-  }, {
-    key: "localDate",
-    value: function localDate(date) {
-      return moment.utc(date).local();
-    }
-  }, {
-    key: "longLocalDate",
-    value: function longLocalDate(date) {
-      return this.dateTimeFormat(date, 'ddd, DD MMM, YYYY');
-    }
-  }, {
-    key: "saveData",
-    value: function saveData(key, data) {
-      var existingData = window.localStorage.getItem('__fluentsupport_data');
-
-      if (!existingData) {
-        existingData = {};
-      } else {
-        existingData = JSON.parse(existingData);
-      }
-
-      existingData[key] = data;
-      window.localStorage.setItem('__fluentsupport_data', JSON.stringify(existingData));
-    }
-  }, {
-    key: "getData",
-    value: function getData(key) {
-      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var existingData = window.localStorage.getItem('__fluentsupport_data');
-      existingData = JSON.parse(existingData);
-
-      if (!existingData) {
-        return defaultValue;
-      }
-
-      if (existingData[key]) {
-        return existingData[key];
-      }
-
-      return defaultValue;
-    }
-  }, {
-    key: "longLocalDateTime",
-    value: function longLocalDateTime(date) {
-      return this.dateTimeFormat(date, 'ddd, DD MMM, YYYY hh:mm:ssa');
-    }
-  }, {
-    key: "ucFirst",
-    value: function ucFirst(text) {
-      return text[0].toUpperCase() + text.slice(1).toLowerCase();
-    }
-  }, {
-    key: "ucWords",
-    value: function ucWords(text) {
-      return (text + '').replace(/^(.)|\s+(.)/g, function ($1) {
-        return $1.toUpperCase();
-      });
-    }
-  }, {
-    key: "slugify",
-    value: function slugify(text) {
-      return text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/[^\w\\-]+/g, '') // Remove all non-word chars
-      .replace(/\\-\\-+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, ''); // Trim - from end of text
-    }
-  }, {
-    key: "handleError",
-    value: function handleError(response) {
-      if (response.responseJSON) {
-        response = response.responseJSON;
-      }
-
-      var errorMessage = '';
-
-      if (typeof response === 'string') {
-        errorMessage = response;
-      } else if (response && response.message) {
-        errorMessage = response.message;
-      } else {
-        errorMessage = this.convertToText(response);
-      }
-
-      if (!errorMessage) {
-        errorMessage = 'Something is wrong!';
-      }
-
-      this.$notify({
-        type: 'error',
-        title: 'Error',
-        message: errorMessage,
-        offset: 32,
-        dangerouslyUseHTMLString: true
-      });
-    }
-  }, {
-    key: "convertToText",
-    value: function convertToText(obj) {
-      var string = [];
-
-      if (_typeof(obj) === 'object' && obj.join === undefined) {
-        for (var prop in obj) {
-          string.push(this.convertToText(obj[prop]));
-        }
-      } else if (_typeof(obj) === 'object' && !(obj.join === undefined)) {
-        for (var _prop in obj) {
-          string.push(this.convertToText(obj[_prop]));
-        }
-      } else if (typeof obj === 'function') {} else if (typeof obj === 'string') {
-        string.push(obj);
-      }
-
-      return string.join('<br />');
-    }
-  }, {
-    key: "humanDiffTime",
-    value: function humanDiffTime(date) {
-      var dateString = date === undefined ? null : date;
-
-      if (!dateString) {
-        return '';
-      }
-
-      var endTime = new Date();
-      var timeDiff = endTime - appStartTime; // in ms
-
-      var dateObj = moment(dateString);
-      return dateObj.from(moment(window.fluentFrameworkAdmin.server_time).add(timeDiff, 'milliseconds'));
-    }
-  }, {
-    key: "waitingTime",
-    value: function waitingTime(time1, time2) {
-      if (!time2 || !time1) {
-        return '';
-      }
-
-      time1 = moment(time1);
-      time2 = moment(time2);
-      return time2.from(time1);
     }
   }]);
 
@@ -31323,57 +31438,25 @@ var defaultFormData = function defaultFormData() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useDateTime": () => (/* reexport safe */ _useDateTime__WEBPACK_IMPORTED_MODULE_0__["default"]),
-/* harmony export */   "useFetch": () => (/* reexport safe */ _useFetch__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "useModal": () => (/* reexport safe */ _useModal__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   "useNotification": () => (/* reexport safe */ _useNotification__WEBPACK_IMPORTED_MODULE_3__["default"]),
-/* harmony export */   "useProject": () => (/* reexport safe */ _useProject__WEBPACK_IMPORTED_MODULE_4__["default"]),
-/* harmony export */   "useUser": () => (/* reexport safe */ _useUser__WEBPACK_IMPORTED_MODULE_5__["default"]),
-/* harmony export */   "useTask": () => (/* reexport safe */ _useTask__WEBPACK_IMPORTED_MODULE_6__["default"]),
-/* harmony export */   "useErrors": () => (/* reexport safe */ _useErrors__WEBPACK_IMPORTED_MODULE_7__["default"])
+/* harmony export */   "useFetch": () => (/* reexport safe */ _useFetch__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "useModal": () => (/* reexport safe */ _useModal__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "useProject": () => (/* reexport safe */ _useProject__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   "useUser": () => (/* reexport safe */ _useUser__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "useTask": () => (/* reexport safe */ _useTask__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   "useErrors": () => (/* reexport safe */ _useErrors__WEBPACK_IMPORTED_MODULE_5__["default"])
 /* harmony export */ });
-/* harmony import */ var _useDateTime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useDateTime */ "./resources/admin/composables/useDateTime.js");
-/* harmony import */ var _useFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useFetch */ "./resources/admin/composables/useFetch.js");
-/* harmony import */ var _useModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useModal */ "./resources/admin/composables/useModal.js");
-/* harmony import */ var _useNotification__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useNotification */ "./resources/admin/composables/useNotification.js");
-/* harmony import */ var _useProject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useProject */ "./resources/admin/composables/useProject.js");
-/* harmony import */ var _useUser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./useUser */ "./resources/admin/composables/useUser.js");
-/* harmony import */ var _useTask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./useTask */ "./resources/admin/composables/useTask.js");
-/* harmony import */ var _useErrors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./useErrors */ "./resources/admin/composables/useErrors.js");
+/* harmony import */ var _useFetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useFetch */ "./resources/admin/composables/useFetch.js");
+/* harmony import */ var _useModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useModal */ "./resources/admin/composables/useModal.js");
+/* harmony import */ var _useProject__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useProject */ "./resources/admin/composables/useProject.js");
+/* harmony import */ var _useUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useUser */ "./resources/admin/composables/useUser.js");
+/* harmony import */ var _useTask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useTask */ "./resources/admin/composables/useTask.js");
+/* harmony import */ var _useErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./useErrors */ "./resources/admin/composables/useErrors.js");
 
 
 
 
 
 
-
-
-
-/***/ }),
-
-/***/ "./resources/admin/composables/useDateTime.js":
-/*!****************************************************!*\
-  !*** ./resources/admin/composables/useDateTime.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-  var formatDate = function formatDate(date) {
-    return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("DD-MM-YYYY");
-  };
-
-  return {
-    formatDate: formatDate
-  };
-}
 
 /***/ }),
 
@@ -31426,7 +31509,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
+/* harmony import */ var vue_demi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-demi */ "./node_modules/vue-demi/lib/index.mjs");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -31435,6 +31518,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(loading) {
+  var $rest = (0,vue_demi__WEBPACK_IMPORTED_MODULE_1__.inject)("$rest");
+
   var fetchData = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(url) {
       var params,
@@ -31447,7 +31532,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               params = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
               loading.value = true;
               _context.next = 4;
-              return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_1__["default"].get(url, params);
+              return $rest.get(url, params);
 
             case 4:
               response = _context.sent;
@@ -31493,34 +31578,6 @@ __webpack_require__.r(__webpack_exports__);
 
   return {
     handleModal: handleModal
-  };
-}
-
-/***/ }),
-
-/***/ "./resources/admin/composables/useNotification.js":
-/*!********************************************************!*\
-  !*** ./resources/admin/composables/useNotification.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-  var notify = function notify(title, message, type) {
-    return {
-      title: title,
-      message: message,
-      type: type,
-      position: "bottom-right"
-    };
-  };
-
-  return {
-    notify: notify
   };
 }
 

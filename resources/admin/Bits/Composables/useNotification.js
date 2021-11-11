@@ -1,4 +1,4 @@
-export default function () {
+const useNotification = function () {
   const notify = function (title, message, type) {
     return {
       title,
@@ -9,4 +9,6 @@ export default function () {
   };
 
   return { notify };
-}
+};
+
+export default useNotification;
