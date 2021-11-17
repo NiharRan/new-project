@@ -78,7 +78,6 @@ import { useModal, useProject, useUser } from "../../composables";
 import AddEditDialog from "../Task/AddEditDialog.vue";
 import { ElNotification } from "element-plus";
 import Helper from "../Task/helper";
-import Rest from "@/admin/Bits/Rest";
 
 export default {
   components: { AddEditDialog },
@@ -122,9 +121,9 @@ export default {
       formData.project = details.value.id;
       try {
         if (editable.value == true) {
-          response = await Rest.put(url, formData);
+          response = await $rest.put(url, formData);
         } else {
-          response = await Rest.post(url, formData);
+          response = await $rest.post(url, formData);
         }
         if (response) {
           fetchProjectDetails(`projects/${slug}`, details);
@@ -149,7 +148,7 @@ export default {
     };
     const handleDelete = async function (row) {
       try {
-        const response = await Rest.delete(`tasks/${row.id}`);
+        const response = await $rest.delete(`tasks/${row.id}`);
         if (response) {
           fetchTasks();
           ElNotification(notify("Tasks", response.message, "success"));

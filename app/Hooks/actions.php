@@ -9,9 +9,49 @@
  * equivalent to add_action('slug-foo', ['FooHandler', 'handleFoo']).
  */
 
+use NewProject\App\Models\User;
+
 /**
  * @var $app WPFluent\Foundation\Application
  */
 
 $app->addAction('admin_menu', 'AdminMenuHandler@add');
+$app->addAction('new-project/get_list', 'UserHandler@filterUsers', 10, 2);
 
+add_shortcode('new-project-user-list', function ($formId = 'default') {
+    $users = User::get();
+
+
+    $html = '<table class="' . $formId . '">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            ' . render_users($users) . '
+        </tbody>
+    </table>';
+
+    return $html;
+});
+
+function render_users($users)
+{
+    $html = '';
+    foreach ($users as $user) {
+        $html .= "<tr>
+            <td>" . date('d-m-Y', strtotime($user->created_at)) . "</td>
+            <th>$user->first_name</th>
+            <th>$user->last_name</th>
+            <th>$user->email</th>
+            <th>$user->phone</th>
+        </tr>";
+    }
+
+    return $html;
+}

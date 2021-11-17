@@ -27797,8 +27797,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Dashboard',
+  name: "Dashboard",
   data: function data() {
     return {
       me: this.appVars.me
@@ -27806,7 +27809,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     greetingTime: function greetingTime() {
-      var m = this.moment();
+      var m = moment__WEBPACK_IMPORTED_MODULE_0___default()();
       var g = null; //return g
 
       if (!m || !m.isValid()) {
@@ -27926,14 +27929,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
 /* harmony import */ var _Task_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Task/AddEditDialog.vue */ "./resources/admin/Modules/Task/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
 /* harmony import */ var _Task_helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Task/helper */ "./resources/admin/Modules/Task/helper.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -27949,14 +27951,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AddEditDialog: _Task_AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   setup: function setup() {
-    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRoute)();
-    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.useRouter)();
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute)();
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRouter)();
     var slug = route.params.slug;
     var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_Task_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
@@ -28016,7 +28017,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 }
 
                 _context.next = 9;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"].put(url, formData);
+                return $rest.put(url, formData);
 
               case 9:
                 response = _context.sent;
@@ -28025,7 +28026,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
               case 12:
                 _context.next = 14;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"].post(url, formData);
+                return $rest.post(url, formData);
 
               case 14:
                 response = _context.sent;
@@ -28035,7 +28036,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                   fetchProjectDetails("projects/".concat(slug), details);
                   handleEdit(_Task_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData(details.value.id));
                   handleModal(false);
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Tasks", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context.next = 22;
@@ -28045,7 +28046,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 _context.prev = 18;
                 _context.t0 = _context["catch"](5);
                 errors = _context.t0.responseJSON;
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
 
               case 22:
               case "end":
@@ -28079,14 +28080,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("tasks/".concat(row.id));
+                return $rest["delete"]("tasks/".concat(row.id));
 
               case 3:
                 response = _context2.sent;
 
                 if (response) {
                   fetchTasks();
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Tasks", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context2.next = 10;
@@ -28095,7 +28096,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_8__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28153,15 +28154,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
 /* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
 /* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/Project/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Project/helper.js");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Project/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 
@@ -28175,7 +28174,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   name: "Project",
   setup: function setup() {
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
+    var $rest = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)("$rest");
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var visible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var editable = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
@@ -28232,7 +28232,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context.next = 8;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].put(url, formData);
+                return $rest.put(url, formData);
 
               case 8:
                 response = _context.sent;
@@ -28241,7 +28241,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 11:
                 _context.next = 13;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].post(url, formData);
+                return $rest.post(url, formData);
 
               case 13:
                 response = _context.sent;
@@ -28249,8 +28249,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 14:
                 if (response) {
                   fetchProjects("projects", projects);
-                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Projects", response.message, "success"));
+                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Projects", response.message, "success"));
                   handleModal(false);
                 }
 
@@ -28261,7 +28261,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 17;
                 _context.t0 = _context["catch"](4);
                 handleErrors(_context.t0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
 
               case 21:
               case "end":
@@ -28294,14 +28294,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("projects/".concat(row.id));
+                return $rest["delete"]("projects/".concat(row.id));
 
               case 3:
                 response = _context2.sent;
 
                 if (response) {
                   fetchProjects("projects", projects);
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Projects", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Projects", response.message, "success"));
                 }
 
                 _context2.next = 10;
@@ -28310,7 +28310,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28327,7 +28327,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var clearData = function clearData() {
       errors.value = {};
-      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
+      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
       handleModal(false);
     };
 
@@ -28426,9 +28426,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _composables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables */ "./resources/admin/composables/index.js");
 /* harmony import */ var _admin_Bits_Composables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/admin/Bits/Composables */ "./resources/admin/Bits/Composables/index.js");
 /* harmony import */ var _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddEditDialog.vue */ "./resources/admin/Modules/Task/AddEditDialog.vue");
-/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
-/* harmony import */ var _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/admin/Bits/Rest */ "./resources/admin/Bits/Rest.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Task/helper.js");
+/* harmony import */ var element_plus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! element-plus */ "./node_modules/element-plus/es/components/notification/index.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ "./resources/admin/Modules/Task/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -28443,14 +28442,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AddEditDialog: _AddEditDialog_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   name: "Task",
   setup: function setup() {
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
+    var $rest = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)("$rest");
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var visible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var editable = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
@@ -28519,7 +28518,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 }
 
                 _context.next = 10;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].put(url, formData);
+                return $rest.put(url, formData);
 
               case 10:
                 response = _context.sent;
@@ -28528,7 +28527,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
               case 13:
                 _context.next = 15;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"].post(url, formData);
+                return $rest.post(url, formData);
 
               case 15:
                 response = _context.sent;
@@ -28537,8 +28536,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 if (response) {
                   handleModal(false);
                   fetchTasks("tasks", tasks);
-                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
+                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context.next = 23;
@@ -28548,7 +28547,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 _context.prev = 19;
                 _context.t0 = _context["catch"](6);
                 handleErrors(_context.t0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context.t0.statusText, "error"));
 
               case 23:
               case "end":
@@ -28586,14 +28585,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _admin_Bits_Rest__WEBPACK_IMPORTED_MODULE_5__["default"]["delete"]("tasks/".concat(row.id));
+                return $rest["delete"]("tasks/".concat(row.id));
 
               case 3:
                 response = _context2.sent;
 
                 if (response) {
                   fetchTasks("tasks", tasks);
-                  (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Tasks", response.message, "success"));
+                  (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Tasks", response.message, "success"));
                 }
 
                 _context2.next = 10;
@@ -28602,7 +28601,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                (0,element_plus__WEBPACK_IMPORTED_MODULE_7__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
+                (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Oops", _context2.t0.statusText, "error"));
 
               case 10:
               case "end":
@@ -28619,7 +28618,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
     var clearData = function clearData() {
       errors.value = {};
-      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_6__["default"].defaultFormData());
+      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
       handleModal(false);
     };
 
@@ -28947,35 +28946,72 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "Project",
   setup: function setup() {
     var $rest = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)("$rest");
-    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+    var formData = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)((0,_helper__WEBPACK_IMPORTED_MODULE_5__.defaultFormData)());
     var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var visible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var editable = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)("");
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var users = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
+    var selected_fields = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
+    var field = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
 
     var _useFetch = (0,_composables__WEBPACK_IMPORTED_MODULE_2__.useFetch)(loading),
         fetchData = _useFetch.fetchData;
 
     var fetchUsers = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var data;
+        var d_fields, s_fields, data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return fetchData("users");
+                d_fields = [];
 
-              case 2:
+                if (!_helper__WEBPACK_IMPORTED_MODULE_5__.default_fields) {
+                  _context.next = 5;
+                  break;
+                }
+
+                _context.next = 4;
+                return _helper__WEBPACK_IMPORTED_MODULE_5__.default_fields.map(function (row) {
+                  return row.name;
+                });
+
+              case 4:
+                d_fields = _context.sent;
+
+              case 5:
+                s_fields = [];
+
+                if (!(selected_fields.value.length > 0)) {
+                  _context.next = 10;
+                  break;
+                }
+
+                _context.next = 9;
+                return selected_fields.value.map(function (row) {
+                  return row.name;
+                });
+
+              case 9:
+                s_fields = _context.sent;
+
+              case 10:
+                _context.next = 12;
+                return fetchData("users", {
+                  default_fields: d_fields.toString(),
+                  fields: s_fields.toString()
+                });
+
+              case 12:
                 data = _context.sent;
 
                 if (data) {
                   users.value = data.users;
                 }
 
-              case 4:
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -29036,7 +29072,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 12:
                 if (response) {
                   fetchUsers();
-                  handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+                  handleEdit((0,_helper__WEBPACK_IMPORTED_MODULE_5__.defaultFormData)());
                   (0,element_plus__WEBPACK_IMPORTED_MODULE_6__.ElNotification)(notify("Users", response.message, "success"));
                   handleModal(false);
                 }
@@ -29062,6 +29098,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref2.apply(this, arguments);
       };
     }();
+
+    var filterData = function filterData() {
+      if (field.value != {}) {
+        selected_fields.value.push(field.value);
+        fetchUsers();
+        isExist(field.value.name);
+        field.value = {};
+      }
+    };
 
     var handleEdit = function handleEdit(row) {
       editable.value = true;
@@ -29114,9 +29159,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
     }();
 
+    var isExist = function isExist(value) {
+      var result = selected_fields.value.find(function (row) {
+        return row.name === value;
+      });
+      return result ? true : false;
+    };
+
+    var removeField = function removeField(index, value) {
+      selected_fields.value.splice(index, 1);
+      isExist(value);
+    };
+
     var clearData = function clearData() {
       errors.value = {};
-      handleEdit(_helper__WEBPACK_IMPORTED_MODULE_5__["default"].defaultFormData());
+      handleEdit((0,_helper__WEBPACK_IMPORTED_MODULE_5__.defaultFormData)());
       handleModal(false);
     };
 
@@ -29124,6 +29181,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       visible: visible,
       editable: editable,
       formData: formData,
+      selected_fields: selected_fields,
+      default_fields: _helper__WEBPACK_IMPORTED_MODULE_5__.default_fields,
+      new_fields: _helper__WEBPACK_IMPORTED_MODULE_5__.new_fields,
+      field: field,
       errors: errors,
       users: users,
       loading: loading,
@@ -29135,7 +29196,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handleModal: handleModal,
       longLocalDate: longLocalDate,
       notify: notify,
-      clearData: clearData
+      clearData: clearData,
+      filterData: filterData,
+      isExist: isExist,
+      removeField: removeField
     };
   }
 });
@@ -30626,12 +30690,37 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("New");
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit");
+var _hoisted_2 = {
+  style: {
+    "display": "flex",
+    "align-items": "center",
+    "gap": "20px",
+    "margin-top": "20px"
+  }
+};
+var _hoisted_3 = {
+  style: {
+    "width": "200px"
+  }
+};
+var _hoisted_4 = {
+  style: {
+    "flex": "1"
+  }
+};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Delete");
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit");
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Delete");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
+
+  var _component_el_option = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-option");
+
+  var _component_el_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-select");
+
+  var _component_el_tag = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-tag");
 
   var _component_el_table_column = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-table-column");
 
@@ -30664,7 +30753,56 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), $setup.users && $setup.users.data.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_table, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_select, {
+        modelValue: $setup.field,
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return $setup.field = $event;
+        }),
+        placeholder: "Select field",
+        "value-key": "id",
+        onChange: $setup.filterData
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.new_fields, function (item) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_option, {
+              key: item.name,
+              label: item.label,
+              value: item
+            }, null, 8
+            /* PROPS */
+            , ["label", "value"]);
+          }), 128
+          /* KEYED_FRAGMENT */
+          ))];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["modelValue", "onChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.selected_fields, function (field, index) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_tag, {
+          key: index,
+          closable: "",
+          onClose: function onClose($event) {
+            return $setup.removeField(index, field.name);
+          },
+          type: "success"
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(field.label), 1
+            /* TEXT */
+            )];
+          }),
+          _: 2
+          /* DYNAMIC */
+
+        }, 1032
+        /* PROPS, DYNAMIC_SLOTS */
+        , ["onClose"]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))])]), $setup.users && $setup.users.data.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_table, {
         key: 0,
         data: $setup.users.data,
         style: {
@@ -30707,13 +30845,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
+          }), $setup.isExist('email') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_table_column, {
+            key: 0,
             label: "Email",
             prop: "email"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
+          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.isExist('phone') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_table_column, {
+            key: 1,
             label: "Phone",
             prop: "phone"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
+          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
             label: "Projects",
             prop: "total_projects"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
@@ -30733,7 +30873,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 }
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_2];
+                  return [_hoisted_5];
                 }),
                 _: 2
                 /* DYNAMIC */
@@ -30752,7 +30892,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     type: "danger"
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [_hoisted_3];
+                      return [_hoisted_6];
                     }),
                     _: 1
                     /* STABLE */
@@ -31409,7 +31549,9 @@ var defaultFormData = function defaultFormData() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "defaultFormData": () => (/* binding */ defaultFormData),
+/* harmony export */   "default_fields": () => (/* binding */ default_fields),
+/* harmony export */   "new_fields": () => (/* binding */ new_fields)
 /* harmony export */ });
 var defaultFormData = function defaultFormData() {
   return {
@@ -31422,10 +31564,28 @@ var defaultFormData = function defaultFormData() {
     status: ""
   };
 };
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  defaultFormData: defaultFormData
-});
+var default_fields = [{
+  name: "first_name",
+  label: "First Name",
+  link: true
+}, {
+  name: "last_name",
+  label: "Last Name",
+  link: true
+}, {
+  name: "created_at",
+  label: "Date",
+  link: false
+}];
+var new_fields = [{
+  name: "email",
+  label: "E-mail",
+  link: false
+}, {
+  name: "phone",
+  label: "Phone",
+  link: false
+}];
 
 /***/ }),
 

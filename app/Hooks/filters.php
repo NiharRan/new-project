@@ -9,7 +9,13 @@
  * equivalent to add_filter('slug-foo', ['FooHandler', 'handleFoo']).
  */
 
+use NewProject\App\Hooks\Handlers\UserHandler;
+
 /**
  * $app
  * @var WPFluent\Foundation\Application
  */
+
+add_action('new-project/filter_user_data', function ($users) {
+    return UserHandler::filterUsers($users);
+});

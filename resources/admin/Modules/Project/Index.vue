@@ -60,18 +60,18 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, inject } from "vue";
 import { useModal, useProject, useErrors, useUser } from "../../composables";
 import { useNotification, useDateTime } from "@/admin/Bits/Composables";
 import AddEditDialog from "./AddEditDialog.vue";
 import { ElNotification } from "element-plus";
-import Rest from "@/admin/Bits/Rest";
 import Helper from "./helper";
 
 export default {
   components: { AddEditDialog },
   name: "Project",
   setup() {
+    const $rest = inject("$rest")
     let formData = reactive(Helper.defaultFormData());
     let errors = ref({});
     let visible = ref(false);
@@ -103,9 +103,9 @@ export default {
       formData.users = users;
       try {
         if (editable.value == true) {
-          response = await Rest.put(url, formData);
+          response = await $rest.put(url, formData);
         } else {
-          response = await Rest.post(url, formData);
+          response = await $rest.post(url, formData);
         }
         if (response) {
           fetchProjects("projects", projects);
@@ -129,7 +129,7 @@ export default {
     };
     const handleDelete = async function (row) {
       try {
-        const response = await Rest.delete(`projects/${row.id}`);
+        const response = await $rest.delete(`projects/${row.id}`);
         if (response) {
           fetchProjects("projects", projects);
           ElNotification(notify("Projects", response.message, "success"));

@@ -10,13 +10,21 @@ use NewProject\Framework\Request\Request;
 class UserController extends Controller
 {
     use ValidatorTrait;
+
     public function index(Request $request)
     {
+        $default_fields = explode(',', $request->default_fields);
+        if ($request->has('fields')) {
+            $fields = explode(',', $request->fields);
+            $default_fields = array_merge($default_fields, $fields);
+        }
 
         $users = User::orderBy('id', 'DESC');
         if ($request->has('dropdown') && $request->dropdown) {
+            $users = $users->get();
+            $users = apply_filters('new-project/filter_user_data', $users);
             return [
-                'users' => $users->get()
+                'users' => $users
             ];
         }
 
@@ -28,12 +36,15 @@ class UserController extends Controller
             });
         }
 
-        $users = $users->paginate();
+        $users = $users->select($default_fields)->paginate();
         foreach ($users as $key => $user) {
             $users[$key]->total_assigned_tasks = $user->assigned()->count();
             $users[$key]->total_assigned_by_tasks = $user->assigned_by()->count();
             $users[$key]->total_projects = $user->projects()->count();
         }
+
+        $users = apply_filters('new-project/filter_user_data', $users);
+
         return [
             'users' => $users
         ];
