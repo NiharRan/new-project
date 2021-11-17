@@ -18,10 +18,11 @@ use NewProject\App\Models\User;
 $app->addAction('admin_menu', 'AdminMenuHandler@add');
 $app->addAction('new-project/get_list', 'UserHandler@filterUsers', 10, 2);
 
+$app->addAction("new-project/before_task_create", "TaskHandler@beforeCreate", 10, 1);
+$app->addAction("new-project/after_task_create", "TaskHandler@afterCreate", 10, 1);
+
 add_shortcode('new-project-user-list', function ($formId = 'default') {
     $users = User::get();
-
-
     $html = '<table class="' . $formId . '">
         <thead>
             <tr>
@@ -29,7 +30,7 @@ add_shortcode('new-project-user-list', function ($formId = 'default') {
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
-                <th>Phone</th>
+                <th>Phone</th>  
             </tr>
         </thead>
         <tbody>

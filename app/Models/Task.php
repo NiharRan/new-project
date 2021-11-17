@@ -31,6 +31,11 @@ class Task extends Model
         });
     }
 
+    public function getLinkAttribute()
+    {
+        return "/tasks/$this->slug";
+    }
+
     public function project()
     {
         $model = __NAMESPACE__ . '\Project';

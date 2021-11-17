@@ -14,7 +14,11 @@
           {{ longLocalDate(scope.row.created_at) }}
         </template>
       </el-table-column>
-      <el-table-column label="Name" prop="name"> </el-table-column>
+      <el-table-column label="Name">
+        <template #default="scope">
+          <router-link :to="scope.row.link">{{ scope.row.name }}</router-link>
+        </template>
+      </el-table-column>
       <el-table-column label="Project" #default="scope">
         <router-link
           v-if="scope.row.project"

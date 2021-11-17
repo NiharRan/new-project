@@ -10,6 +10,7 @@ return array(
     'NewProject\\Database\\DBMigrator' => $baseDir . '/database/DBMigrator.php',
     'NewProject\\Database\\DBSeeder' => $baseDir . '/database/DBSeeder.php',
     'NewProject\\Database\\Migrations\\ProjectMigrator' => $baseDir . '/database/Migrations/ProjectMigrator.php',
+    'NewProject\\Database\\Migrations\\TaskActivityMigrator' => $baseDir . '/database/Migrations/TaskActivityMigrator.php',
     'NewProject\\Database\\Migrations\\TaskMigrator' => $baseDir . '/database/Migrations/TaskMigrator.php',
     'NewProject\\Database\\Migrations\\UserMigrator' => $baseDir . '/database/Migrations/UserMigrator.php',
     'NewProject\\Database\\Migrations\\UserProjectMigrator' => $baseDir . '/database/Migrations/UserProjectMigrator.php',

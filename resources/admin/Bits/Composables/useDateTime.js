@@ -45,6 +45,10 @@ const useDateTime = function () {
     return time2.from(time1);
   };
 
+  const handleTimeAgo = function (date) {
+    return moment(date).fromNow();
+  };
+
   return {
     dateTimeFormat,
     localDate,
@@ -52,6 +56,7 @@ const useDateTime = function () {
     longLocalDateTime,
     humanDiffTime,
     waitingTime,
+    handleTimeAgo,
   };
 };
 

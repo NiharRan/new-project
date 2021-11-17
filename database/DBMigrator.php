@@ -8,6 +8,7 @@ use NewProject\Database\Migrations\ProjectMigrator;
 use NewProject\Database\Migrations\TaskMigrator;
 use NewProject\Database\Migrations\UserMigrator;
 use NewProject\Database\Migrations\UserProjectMigrator;
+use NewProject\Database\Migrations\TaskActivityMigrator;
 
 class DBMigrator
 {
@@ -16,6 +17,7 @@ class DBMigrator
         ProjectMigrator::class,
         UserProjectMigrator::class,
         TaskMigrator::class,
+        TaskActivityMigrator::class
     ];
     public static function run($network_wide = false)
     {

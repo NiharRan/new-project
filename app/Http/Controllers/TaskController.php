@@ -43,7 +43,7 @@ class TaskController extends Controller
         $tasks = $tasks->with(['project', 'to'])->paginate();
 
         $tasks = apply_filters('new-project/tasks', $tasks);
-        
+
         return [
             'tasks' => $tasks
         ];
@@ -60,8 +60,8 @@ class TaskController extends Controller
         $data['assign_to'] = $request->user;
         $data['assign_by'] = 1;
         $data = wp_unslash($data);
-        do_action('new-project/before_task_created', $data);
         $task = Task::create($data);
+        do_action('new-project/after_task_create', $task);
 
         return [
             'message' => __('Task has been successfully created', 'fluent-crod'),
@@ -69,9 +69,9 @@ class TaskController extends Controller
         ];
     }
 
-    public function get($id)
+    public function get($slug)
     {
-        $task = Task::findOrFail($id);
+        $task = Task::with(['project', 'to', 'by'])->where('slug', $slug)->first();
         return [
             'task' => $task
         ];
@@ -93,6 +93,7 @@ class TaskController extends Controller
             'status' => $data['status'],
         ]);
         $task->save();
+        do_action('new-project/after_task_created', $task);
 
         return [
             'message' => __('Task has been updated', 'fluent-crod'),

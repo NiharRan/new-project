@@ -14,7 +14,7 @@ $router->prefix('projects')->group(function ($router) {
 $router->prefix('tasks')->group(function ($router) {
     $router->get('/', 'TaskController@index');
     $router->post('/', 'TaskController@save');
-    $router->get('/{id}', 'TaskController@get')->int('id');
+    $router->get('/{slug}', 'TaskController@get');
     $router->put('/{id}', 'TaskController@update')->int('id');
     $router->delete('/{id}', 'TaskController@destroy')->int('id');
 });

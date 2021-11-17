@@ -42,6 +42,7 @@ class ComposerStaticInit78eac54ccfe620d19cab2b3283d1a71a
         'NewProject\\Database\\DBMigrator' => __DIR__ . '/../..' . '/database/DBMigrator.php',
         'NewProject\\Database\\DBSeeder' => __DIR__ . '/../..' . '/database/DBSeeder.php',
         'NewProject\\Database\\Migrations\\ProjectMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProjectMigrator.php',
+        'NewProject\\Database\\Migrations\\TaskActivityMigrator' => __DIR__ . '/../..' . '/database/Migrations/TaskActivityMigrator.php',
         'NewProject\\Database\\Migrations\\TaskMigrator' => __DIR__ . '/../..' . '/database/Migrations/TaskMigrator.php',
         'NewProject\\Database\\Migrations\\UserMigrator' => __DIR__ . '/../..' . '/database/Migrations/UserMigrator.php',
         'NewProject\\Database\\Migrations\\UserProjectMigrator' => __DIR__ . '/../..' . '/database/Migrations/UserProjectMigrator.php',

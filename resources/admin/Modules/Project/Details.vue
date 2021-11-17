@@ -99,9 +99,6 @@ export default {
     const { fetchUsers } = useUser(loading);
     fetchProjectDetails(`projects/${slug}`, details);
     fetchUsers("users", users, { dropdown: true });
-    const back = function () {
-      router.push("/projects");
-    };
 
     const { longLocalDate } = useDateTime();
     const { handleModal } = useModal(visible, editable);
