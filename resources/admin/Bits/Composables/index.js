@@ -4,3 +4,4 @@ export { default as useApplication } from "./useApplication";
 export { default as useStorage } from "./useStorage";
 export { default as useError } from "./useError";
 export { default as useText } from "./useText";
+export { default as useModal } from "./useModal";

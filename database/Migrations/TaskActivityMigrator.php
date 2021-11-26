@@ -20,6 +20,7 @@ class TaskActivityMigrator
                 `task_id` BIGINT(20) UNSIGNED NOT NULL,
                 `message` TEXT NOT NULL,
                 `parent_id` BIGINT(20) UNSIGNED NOT NULL,
+                `user_id` BIGINT(20) UNSIGNED NOT NULL,
                 `status` TINYINT NULL,
                 `created_at` TIMESTAMP NULL,
                 `updated_at` TIMESTAMP NULL

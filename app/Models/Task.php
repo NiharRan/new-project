@@ -24,6 +24,10 @@ class Task extends Model
         'status'
     ];
 
+    protected $appends = [
+        'link'
+    ];
+
     public static function boot()
     {
         static::creating(function ($model) {

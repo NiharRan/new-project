@@ -19,6 +19,13 @@ $router->prefix('tasks')->group(function ($router) {
     $router->delete('/{id}', 'TaskController@destroy')->int('id');
 });
 
+$router->prefix('comments')->group(function ($router) {
+    $router->get('/', 'CommentController@index');
+    $router->post('/', 'CommentController@save');
+    $router->put('/{id}', 'CommentController@update')->int('id');
+    $router->delete('/{id}', 'CommentController@destroy')->int('id');
+});
+
 $router->prefix('users')->group(function ($router) {
     $router->get('/', 'UserController@index');
     $router->post('/', 'UserController@save');

@@ -1,4 +1,4 @@
-const useError = function () {
+const useError = function (errors) {
   const handleError = function (response) {
     if (response.responseJSON) {
       response = response.responseJSON;
@@ -34,8 +34,26 @@ const useError = function () {
     return string.join("<br />");
   };
 
+  const handleErrors = function (error) {
+    if ("responseJSON" in error) {
+      errors.value = error.responseJSON;
+    } else {
+      errors.value = error;
+    }
+
+    if (Array.isArray(errors.value)) {
+      let objErrors = {};
+      errors.value.forEach(function (row) {
+        let key = Object.keys(row)[0];
+        objErrors[key] = row[key];
+      });
+      errors.value = objErrors;
+    }
+  };
+
   return {
     handleError,
+    handleErrors,
     convertToText,
   };
 };

@@ -1,7 +1,10 @@
 <template>
   <el-main class="bg-white shadow" v-loading="loading">
     <div style="display: flex; justify-content: space-between">
-      <el-button type="info" icon="el-icon-d-arrow-left" @click="back"
+      <el-button
+        type="info"
+        icon="el-icon-d-arrow-left"
+        @click="back('/projects')"
         >Back</el-button
       >
       <el-button type="primary" icon="el-icon-plus" @click="handleModal(true)"
@@ -23,7 +26,9 @@
           {{ longLocalDate(scope.row.created_at) }}
         </template>
       </el-table-column>
-      <el-table-column label="Name" prop="name"> </el-table-column>
+      <el-table-column label="Name" #default="scope">
+        <router-link :to="scope.row.link">{{ scope.row.name }}</router-link>
+      </el-table-column>
       <el-table-column label="Assigned To">
         <template #default="scope">
           <div style="display: flex; gap: 15px">
@@ -73,7 +78,11 @@
 <script>
 import { useRoute, useRouter } from "vue-router";
 import { ref, reactive } from "vue";
-import { useNotification, useDateTime } from "@/admin/Bits/Composables";
+import {
+  useNotification,
+  useDateTime,
+  useApplication,
+} from "@/admin/Bits/Composables";
 import { useModal, useProject, useUser } from "../../composables";
 import AddEditDialog from "../Task/AddEditDialog.vue";
 import { ElNotification } from "element-plus";
@@ -94,6 +103,8 @@ export default {
     let details = ref(null);
     let loading = ref(false);
     let users = ref(null);
+
+    const { back } = useApplication();
 
     const { fetchProjectDetails } = useProject(loading);
     const { fetchUsers } = useUser(loading);

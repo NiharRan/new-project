@@ -9,6 +9,7 @@
  * equivalent to add_filter('slug-foo', ['FooHandler', 'handleFoo']).
  */
 
+use NewProject\App\Hooks\Handlers\CommentHandler;
 use NewProject\App\Hooks\Handlers\UserHandler;
 
 /**
@@ -16,6 +17,9 @@ use NewProject\App\Hooks\Handlers\UserHandler;
  * @var WPFluent\Foundation\Application
  */
 
-add_action('new-project/filter_user_data', function ($users) {
+add_filter('new-project/filter_user_data', function ($users) {
     return UserHandler::filterUsers($users);
+});
+add_filter('new-project/filter_comments', function ($comments) {
+    return CommentHandler::filterComments($comments);
 });

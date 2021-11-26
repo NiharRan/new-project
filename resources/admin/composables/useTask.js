@@ -13,5 +13,12 @@ export default function (loading) {
       tasks.value = data.tasks;
     }
   };
-  return { fetchTaskDetails, fetchTasks };
+
+  const loadComments = async function (url, comments, obj = null) {
+    const data = await fetchData(url, obj);
+    if (data) {
+      comments.value = data.comments;
+    }
+  };
+  return { fetchTaskDetails, fetchTasks, loadComments };
 }
